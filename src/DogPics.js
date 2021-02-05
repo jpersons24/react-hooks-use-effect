@@ -6,14 +6,17 @@ function DogPics() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    console.log("useEffect");
+    // console.log("useEffect");
     fetch("https://dog.ceo/api/breeds/image/random/3")
       .then((r) => r.json())
       .then((data) => {
-        console.log("setState");
+        // console.log("setState");
         setImages(data.messages);
       });
-  });
+  }, []);
+
+  // in above example component rendering cycle looks like this:
+  // redner -> useEffect -> setImages -> render
 
   console.log("render");
 
